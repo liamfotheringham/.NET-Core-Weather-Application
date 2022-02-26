@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Weather_Application.Data;
+using Weather_Application.Models;
+using Weather_Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +16,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddOptions<WeatherAPIModel>()
+                .Bind(builder.Configuration.GetSection(nameof(WeatherAPIModel)));
+
+builder.Services.AddScoped<WeatherLookupService>();
+
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
