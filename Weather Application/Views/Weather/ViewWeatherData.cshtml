@@ -1,0 +1,22 @@
+﻿@model Weather_Application.Models.WeatherModel
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+            <h2>@Model.Location.Name,  @Model.Location.Region</h2>
+            
+            <div class="media">
+                <img title="@Model.Current.Condition.Text" class="img-responsive media-object pull-left" src="@Model.Current.Condition.Icon" />
+                <h2 style="display:inline" class="media-heading">@Model.Current.Temp_c °</h2>
+            </div>
+            
+            <h5>Feels @Model.Current.Feelslike_c °</h5>
+            
+            <h4>@Model.Current.Condition.Text</h4>
+
+            <a href="/Weather">Back</a>
+
+        </div>
+    </div>
+</div>
