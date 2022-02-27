@@ -5,6 +5,7 @@
 
         <div class="col-md-12 text-center">
             <h2>@Model.Location.Name,  @Model.Location.Region</h2>
+            <p>Local Time: @Model.Location.Localtime</p>
             
             <div class="media">
                 <img title="@Model.Current.Condition.Text" class="img-responsive media-object pull-left" src="@Model.Current.Condition.Icon" />
@@ -14,6 +15,7 @@
             <h5>Feels @Model.Current.Feelslike_c °</h5>
             
             <h4>@Model.Current.Condition.Text</h4>
+
 
             <a href="/Weather">Back</a>
 
