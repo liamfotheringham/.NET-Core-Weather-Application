@@ -23,8 +23,8 @@ builder.Services.AddScoped<WeatherLookupService>();
 
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    googleOptions.ClientId = builder.Configuration.GetValue<string>("GoogleLoginAPI:ClientID");
+    googleOptions.ClientSecret = builder.Configuration.GetValue<string>("GoogleLoginAPI:ClientSecret");
 });
 
 builder.Services.AddHttpClient();
